@@ -20,8 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Spanish keys
 #include "keymap_spanish.h"
 
-// Tap dance & layers
-#include "custom_defs.h"
+// Layers
+#include "layers.h"
+#include "tapdance_actions.h"
 
 // Caps word
 //#include "capsword.h"

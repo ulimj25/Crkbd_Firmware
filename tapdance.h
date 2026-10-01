@@ -14,17 +14,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
+#include QMK_KEYBOARD_H
 
-// Layers
-
-enum kb_layers {
-    Wrtng,
-    Sym,
-    Fn,
-    Gmng,
-    Gmngsym
-};
-
+// Tap dances list
 enum tap_dances {
     Slsh,    // Q -> /
     At,      // W -> @
@@ -54,3 +46,6 @@ enum tap_dances {
     Stcw,    // LSft -> Caps word
     FnGm    // Fn -> Gmng
 };
+// Custom functions
+void td_SftCw(tap_dance_state_t *state, void *user_data);
+void td_FnGmng(tap_dance_state_t *state, void *user_data);
