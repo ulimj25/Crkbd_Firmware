@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // CAPS WORD CONFIG
 #define CAPS_WORD_IDLE_TIMEOUT 3000
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 
 // TAP-DANCE CONFIG
 #define TAPPING_TERM 150

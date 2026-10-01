@@ -16,28 +16,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "layers.h"
 #include "tapdance.h"
 
-// Custom functions
-void td_SftCw(tap_dance_state_t *state, void *user_data){
-    if (state->count == 2) caps_word_on();
+
+// Hold -> layer Fn, double tap -> Layer Gmng
+static bool fn_held = false;
+ 
+void td_fn_gaming_each(tap_dance_state_t *state, void *user_data) {
+  if (state->count == 2)
+    layer_on(Gmng);
+}
+ 
+void td_fn_gaming_finished(tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1 && state->pressed) {
+    layer_on(Fn);
+    fn_held = true;
+  }
+}
+ 
+void td_fn_gaming_reset(tap_dance_state_t *state, void *user_data) {
+  if (fn_held) {
+    layer_off(Fn);
+    fn_held = false;
+  }
 }
 
-void td_FnGmng(tap_dance_state_t *state, void *user_data){
-    if(state->count == 2) layer_on(Gmng);
-}
-
-static void hold_layer(uint8_t layer, bool pressed){
-    if (pressed)
-        layer_on(layer);
-    else
-        layer_off(layer);
-}
-
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record){
-    switch (keycode) {
-        case TD(FnGm):
-            hold_layer(Gmng, record -> event.pressed);
-            return true;
-        default: return true;
-    }
-}

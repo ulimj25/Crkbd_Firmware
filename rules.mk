@@ -15,3 +15,4 @@ GRAVE_ESC_ENABLE = no
 MAGIC_ENABLE = no
 
 SRC += tapdance.c
+SRC += capsword.c

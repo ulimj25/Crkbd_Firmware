@@ -43,9 +43,10 @@ enum tap_dances {
     Dot,     // . -> :
     Mins,    // - -> _
             
-    Stcw,    // LSft -> Caps word
     FnGm    // Fn -> Gmng
 };
 // Custom functions
-void td_SftCw(tap_dance_state_t *state, void *user_data);
-void td_FnGmng(tap_dance_state_t *state, void *user_data);
+ 
+void td_fn_gaming_each(tap_dance_state_t *state, void *user_data);
+void td_fn_gaming_finished(tap_dance_state_t *state, void *user_data);
+void td_fn_gaming_reset(tap_dance_state_t *state, void *user_data);

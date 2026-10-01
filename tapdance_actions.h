@@ -31,6 +31,5 @@ tap_dance_action_t tap_dance_actions[] = {
     [Dot]  = ACTION_TAP_DANCE_DOUBLE(ES_DOT, ES_COLN), // . -> :
     [Mins] = ACTION_TAP_DANCE_DOUBLE(ES_MINS, ES_UNDS), // - -> _
     
-    [Stcw] = ACTION_TAP_DANCE_FN(td_SftCw), // LShift -> CapsWord on
-    [FnGm] = ACTION_TAP_DANCE_FN(td_FnGmng), // Fn -> Gmng
+    [FnGm] = ACTION_TAP_DANCE_FN_ADVANCED(td_fn_gaming_each, td_fn_gaming_finished, td_fn_gaming_reset), // Fn -> Gmng
 };
