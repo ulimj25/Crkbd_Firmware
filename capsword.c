@@ -20,6 +20,26 @@ bool caps_word_press_user(uint16_t keycode){
         case KC_A ... KC_Z:
         case KC_SCLN:
         case TD(Mins):
+        case TD(Slsh):
+        case TD(At):
+        case TD(Num):
+        case TD(Dlr):
+        case TD(Perc):
+        case TD(Apar):
+        case TD(Cpar):
+        case TD(Lth):
+        case TD(Gth):
+        case TD(Aqes):
+        case TD(Cqes):
+        case TD(Abra):
+        case TD(Cbra):
+        case TD(Aexc):
+        case TD(Cexc):
+        case TD(Bsls):
+        case TD(Eql):
+        case TD(Ampr):
+        case TD(Allv):
+        case TD(Cllv):
             add_weak_mods(MOD_BIT(KC_LSFT));
             return true;
 

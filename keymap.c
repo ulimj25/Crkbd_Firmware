@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,   KC_3,   KC_Z,    KC_X,   KC_C,    KC_V,                          KC_O,    KC_F1,   KC_F2,   KC_F3,  _______, KC_LALT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         KC_4, MO(Gmngsym), KC_SPC,    TG(Gmng), TG(Gmng), _______
+                                         KC_4, MO(Gmngsym), KC_SPC,    TG(Gmng), _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
     [Gmngsym] = LAYOUT_split_3x6_3(
@@ -102,22 +102,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 /*
-
-#include "capsword.h"
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record){
-    switch (keycode){
-        case TD(LYR1):
-            if (record->event.pressed) layer_on(Sym);
-            else layer_off(Sym);
-            return true;
-        case TD(LYR2):
-            if (record->event.pressed) layer_on(Fn);
-            else layer_off(Fn);
-            return true;
-        default: return true;
-    }
-}
 
 #include "oled.h"
 bool oled_task_user(void){
