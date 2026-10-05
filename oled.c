@@ -13,12 +13,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 // Rotation config
-oled_rotation_t oled_init_user(oled_rotation_t rotation){
-     if (is_keyboard_master()) return OLED_ROTATION_270;
-     else return OLED_ROTATION_180;
+#include QMK_KEYBOARD_H
+#include "layers.h"
 
-     return rotation;
-}
 
 // Logo printing funcitions
 static void render_logo(void) {
@@ -119,7 +116,6 @@ static void Tex(void){
      oled_set_cursor(0,2);
      oled_write_P(tex0, false);
 }
-*/
 
 static void Config(void){
      static const char PROGMEM cfg0[] = {
@@ -132,52 +128,48 @@ static void Config(void){
      oled_write_P(cfg0, false);
 }
 
+*/
 
 void Write_lyr(void){
-	static uint8_t lyr_ac;
-	for (uint8_t i = 0; i <= Conf; i++){
-		if (IS_LAYER_ON(i)) lyr_ac = i;
-	}
+	uint8_t lyr_ac = get_highest_layer(layer_state);
+	
+    oled_set_cursor(0,9);
 	if (host_keyboard_led_state().caps_lock || is_caps_word_on()){
-		oled_set_cursor(0,9);
 		Caps();
-		switch (lyr_ac){
-			case Wrtng:
-				Writin();
-				break;
-			case Sym:
-				Symbols();
-				break;
-			case Fn:
-				Fnkeys();
-				break;
-			case Gaming:
-				Gamin();
-				break;
-			case Conf:
-				Config();
-				break;
-		}
-	} else {
-		oled_set_cursor(0,9);
-		Arch();
-		switch (lyr_ac){
-			case Wrtng:
-				Writin();
-				break;
-			case Sym:
-				Symbols();
-				break;
-			case Fn:
-				Fnkeys();
-				break;
-			case Gaming:
-				Gamin();
-				break;
-			case Conf:
-				Config();
-				break;
-		}
-	}
+	} else Arch();
+
+    switch (lyr_ac){
+        case Wrtng:
+            Writin();
+            break;
+        case Sym:
+            Symbols();
+            break;
+        case Fn:
+            Fnkeys();
+            break;
+        case Gmng:
+        case Gmngsym:
+            Gamin();
+            break;
+    }
+}
+// Callbacks QMK
+// Rotación
+oled_rotation_t oled_init_user(oled_rotation_t rotation){
+     if (is_keyboard_master()) return OLED_ROTATION_270;
+     else return OLED_ROTATION_180;
+
+     return rotation;
 }
 
+// Render oled
+bool oled_task_user(void){
+     if (!is_keyboard_master()) render_logo();
+
+     if (is_keyboard_master()){
+	Write_lyr();
+
+	}
+     return false;
+}

@@ -16,3 +16,4 @@ MAGIC_ENABLE = no
 
 SRC += tapdance.c
 SRC += capsword.c
+SRC += oled.c
