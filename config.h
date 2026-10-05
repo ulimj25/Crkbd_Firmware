@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 150
 
 // OLED CONFIG
-#define OLED_FONT_H "glcdfont.c"
+#define OLED_FONT_H "cornefont.c"
 #define OLED_SCROLL_TIMEOUT 5000
 
 #ifdef RGB_MATRIX_ENABLE
